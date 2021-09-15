@@ -1,0 +1,92 @@
+[
+    {
+      "precio": 2500,
+      "id": 1,
+      "title": "Camiseta 9Z Team",
+      "thumbnailUrl": "media/9z.png"
+    },
+    {
+      "precio": 2500,
+      "id": 2,
+      "title": "Camiseta Astralis",
+      "thumbnailUrl": "media/astralis.jpg"
+    },
+    {
+      "precio": 2500,
+      "id": 3,
+      "title": "Camiseta MIBR",
+      "thumbnailUrl": "media/mibr.jpg"
+    },
+    {
+      "precio": 2500,
+      "id": 4,
+      "title": "Camiseta Complexity",
+      "thumbnailUrl": "media/complexity.jpg"
+    },
+    {
+      "precio": 2500,
+      "id": 5,
+      "title": "Camiseta Fnatic",
+      "thumbnailUrl": "media/fnatic.jpg"
+    },
+    {
+      "precio": 2500,
+      "id": 6,
+      "title": "Camiseta Furia Team",
+      "thumbnailUrl": "media/furia.jpg"
+    },
+    {
+        "precio": 2500,
+        "id": 1,
+        "title": "Camiseta G2 Team",
+        "thumbnailUrl": "media/g2.jpg"
+    },
+    {
+        "precio": 2500,
+        "id": 2,
+        "title": "Camiseta Heroic Team",
+        "thumbnailUrl": "media/heoric.png"
+    },
+    {
+        "precio": 2500,
+        "id": 3,
+        "title": "Camiseta Isurus Team",
+        "thumbnailUrl": "media/isurus.jpg"
+    },
+    {
+        "precio": 2500,
+        "id": 4,
+        "title": "Camiseta NAVI",
+        "thumbnailUrl": "media/navi.jpeg"
+    },
+    {
+        "precio": 2500,
+        "id": 5,
+        "title": "Camiseta Ninjas In Pijamas",
+        "thumbnailUrl": "media/nip.jpg"
+    },
+    {
+        "precio": 2500,
+        "id": 6,
+        "title": "Camiseta Team Liquid",
+        "thumbnailUrl": "media/team liquid.jpg"
+    },
+    {
+        "precio": 2500,
+        "id": 6,
+        "title": "Camiseta Team Vitality",
+        "thumbnailUrl": "media/team vitality.jpg"
+    },
+    {
+        "precio": 2500,
+        "id": 6,
+        "title": "Camiseta Virtus Pro",
+        "thumbnailUrl": "media/virtus pro.jpg"
+    },
+    {
+        "precio": 2500,
+        "id": 6,
+        "title": "Camiseta Renegades Team",
+        "thumbnailUrl": "media/renegades.png"
+    }
+  ]
