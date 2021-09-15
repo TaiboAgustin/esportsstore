@@ -48,7 +48,16 @@ const addCarrito = e => {//al momento de presionar el boton de comprar, se manda
 const setCarrito = objeto => {//capturar el objeto junto con sus atributos 
     console.log(objeto)
     const jersey={
-        id: objeto.querySelector('.btn-dark').dataset.id //acceder al id del producto seleccionado
+        id: objeto.querySelector('.btn-dark').dataset.id,//acceder al id del producto seleccionado
+        title: objeto.querySelector('h5').textContent,
+        precio: objeto.querySelector('p').textContent,
+        cantidad: 1
     }
+
+    if(carrito.hasOwnProperty(producto.id)){//verificar si el producto se esta duplicando, es decir, si se quiere comprar el producto mas de una vez, para modificar la cantidad 
+        producto.cantidad = carrito[producto.id].cantidad+1
+    }
+    carrito[producto.id] = {...producto}//hacer una copia del producto en caso de que se compre mas de uno
+    
     console.log(jersey)
 }
