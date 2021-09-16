@@ -1,10 +1,10 @@
 //se crean constantes para acceder a cada elemento del html por su id
-const cards = $("#cards")
-const items = $("#items")
-const footer = $("#footer")
-const templateCard = $("#template-card").content 
-const templateFooter = $("#template-footer").content
-const templateCarrito = $("#template-carrito").content
+const cards = document.getElementById('cards')
+const items = document.getElementById('items')
+const footer = document.getElementById('footer')
+const templateCard = document.getElementById('template-card').content 
+const templateFooter = document.getElementById('template-footer').content
+const templateCarrito = document.getElementById('template-carrito').content
 const fragment = document.createDocumentFragment()
 let carrito = {}
 
