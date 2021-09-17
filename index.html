@@ -12,7 +12,7 @@
 <body>
     
     <div id="home"class="container-fluid heroImage">
-      <h1 class="titulo rounded"><img class="mt-1" src="media/logo.PNG" alt="logo"></h1>
+      <h1 class="titulo rounded"><img class="img-fluid" src="media/logo.PNG" alt="logo"></h1>
     </div>
     <h2 class="tituloSeccion">Bienvenid@ a nuestra tienda!</h2>
     <div class="bg-dark">
@@ -20,10 +20,10 @@
             <table class="table table-dark table-striped">
               <thead>
                 <tr>
-                  <th scope="col">ID de producto</th>
+                  <th scope="col">ID</th>
                   <th scope="col">Item</th>
                   <th scope="col">Cantidad</th>
-                  <th scope="col">Agregar/Eliminar</th>
+                  <th scope="col">Accion</th>
                   <th scope="col">Total</th>
                 </tr>
               </thead>
@@ -52,7 +52,7 @@
       <template id="template-carrito">
         <tr>
           <th scope="row">id</th>
-          <td>Café</td>
+          <td>Camiseta</td>
           <td>1</td>
           <td>
               <button class="btn btn-info btn-sm">
@@ -67,7 +67,7 @@
       </template>
     
         <template id="template-card">
-            <div class="col-12 mb-2 col-md-4">
+            <div class="col-12 mb-2 col-md-4 row-cols-1">
               <div class="card text-white bg-secondary">
                 <img src="" alt="" class="card-img-top">
                 <div class="card-body">

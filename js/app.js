@@ -10,10 +10,19 @@ let carrito = {}
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchData()
+
+    if(localStorage.getItem('carrito')){//si esxiste ese elemento
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        dibujarCarrito()
+    }
 })
 
 cards.addEventListener('click', e =>{ //registrar el evento de click sobre el boton de comprar para agregar el producto al carrito
     addCarrito(e)
+})
+
+items.addEventListener('click', e => {
+    agregarOEliminarProductos(e)
 })
 
 const fetchData = async() => { //funcion de flecha encargada de hacer consumo del archivo json donde estan alojados los objetos de tipo camiseta
@@ -71,21 +80,83 @@ const setCarrito = objeto => {//capturar el objeto junto con sus atributos
 const dibujarCarrito = () =>{ //funcion flecha encargada de generar el carrito de productos en el html, que contiene el producto a comprar, la cantidad de productos a comprar, el precio por cada producto y el precio total de la compra
     console.log(carrito)
 
-    Object.values(carrito).forEach(producto => {
+    items.innerHTML = ''
+
+    Object.values(carrito).forEach(jersey => {
+
+        console.log(JSON.stringify(jersey))
 
         //limpiar el carrito en cada iteracion para que no se sumen los productos mas de una vez
-        items.innerHTML = ''
+        
 
         //se comienza a levantar cada propiedad del producto comprado para reemplazar los valores del template con los valores del producto seleccionado
-        templateCarrito.querySelector('th').textContent = producto.id
-        templateCarrito.querySelectorAll('td')[0].textContent = producto.title
-        templateCarrito.querySelectorAll('td')[1].textContent = producto.cantidad
-        templateCarrito.querySelector('.btn-info').dataset.id = producto.id
-        templateCarrito.querySelector('.btn-danger').dataset.id = producto.id
-        templateCarrito.querySelector('span').textContent = producto.cantidad * producto.precio
+        templateCarrito.querySelector('th').textContent = jersey.id
+        templateCarrito.querySelectorAll('td')[0].textContent = jersey.title
+        templateCarrito.querySelectorAll('td')[1].textContent = jersey.cantidad
+        templateCarrito.querySelector('.btn-info').dataset.id = jersey.id
+        templateCarrito.querySelector('.btn-danger').dataset.id = jersey.id
+        templateCarrito.querySelector('span').textContent = jersey.cantidad * jersey.precio
 
         const clonar = templateCarrito.cloneNode(true)
         fragment.appendChild(clonar)
     })
     items.appendChild(fragment)
+
+    dibujarFooterCarrito()
+
+    localStorage.setItem('carrito', JSON.stringify(carrito))//almacenar un item en el localstorage cada vez que se agrega un producto al carrito, es decir, cada vez que se dibuje el producto a comprar en el carrito
 }
+
+const dibujarFooterCarrito = () => {
+    footer.innerHTML = ''
+    if(Object.keys(carrito).length === 0){//verificar si en el carrito hay alguna camiseta para comprar, en caso de estarlo, se mantiene el th con el texto que ya estaba anteriormente
+        footer.innerHTML = `
+        <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+        ` 
+        return
+    }
+
+    const sumaCantidad = Object.values(carrito).reduce((contador, {cantidad})=> contador + cantidad, 0 ) //sumar la cantidad total de camisetas en el carrito
+    const precioTotal = Object.values(carrito).reduce((contador,{cantidad, precio}) => contador + cantidad * precio, 0) //calcular el precio total de la compra
+    console.log('la suma total de los productos en el carrito  es de: ' + sumaCantidad)
+    console.log('el precio total de la compra es de: ' + precioTotal)
+
+    templateFooter.querySelectorAll('td')[0].textContent = sumaCantidad
+    templateFooter.querySelector('span').textContent = precioTotal
+
+    const clon = templateFooter.cloneNode(true)
+
+    fragment.appendChild(clon)
+
+    footer.appendChild(fragment)
+
+    const botonVaciarCarrito = document.getElementById('vaciar-carrito')
+    botonVaciarCarrito.addEventListener('click', () => {
+        carrito = {}
+        dibujarCarrito()
+    })
+}
+
+const agregarOEliminarProductos = e =>{//funcion encargada de darle funcionalidad a los botones de agregar una unidad y eliminar una unidad de ese producto en el carrito
+    console.log(e.target)
+
+    if(e.target.classList.contains('btn-info')){//verificar si se esta haciendo click al boton de agregar un producto
+        console.log(carrito[e.target.dataset.id])
+
+        const producto = carrito[e.target.dataset.id]
+        producto.cantidad++ //sumarle 1 a la cantidad del producto que se desea comprar, siempre tomando al id del producto como identificador del mismo
+        carrito[e.target.dataset.id] = {...producto} //hacer una copia del producto en caso de que se agregue uno mas
+        dibujarCarrito()
+    }
+    if(e.target.classList.contains('btn-danger')){//verificar si se esta haciendo click al boton de eliminar una unidad del producto  del carrito
+        const producto = carrito[e.target.dataset.id]
+        producto.cantidad -- //restarle 1 a la cantidad del producto que se desea comprar, siempre tomando al id del producto como identificador del mismo 
+        if(producto.cantidad === 0){//en caso de que se eliminen todas las camisetas de un mismo tipo hasta llegar a 0, el producto se elimina del carrito
+            delete carrito[e.target.dataset.id]
+        }
+        dibujarCarrito()
+    }
+
+    e.stopPropagation()
+}
+
