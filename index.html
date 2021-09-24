@@ -17,87 +17,75 @@
       <h1 class="titulo rounded"><img class="img-fluid" src="media/logo.PNG" alt="logo"></h1>
     </div>
     <h2 class="tituloSeccion">Bienvenid@ a nuestra tienda!</h2>
-    <div class="bg-dark">
-        <div class="container">
-            <table class="table table-dark table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Item</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Accion</th>
-                  <th scope="col">Total</th>
-                </tr>
-              </thead>
-              <tbody id="items"></tbody>
-              <tfoot>
-                <tr id="footer">
-                  <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
-                </tr>
-              </tfoot>
-            </table>
+    <div class="bg-light">
 
-            <div class="row" id="cards"></div>
-        </div>
-
-        <template id="template-footer">
-          <th scope="row" colspan="2">Total productos</th>
-          <td>10</td>
-          <td>
-              <button class="btn btn-danger btn-sm" id="vaciar-carrito">
-                  vaciar todo
-              </button>
-          </td>
-          <td class="font-weight-bold">$ <span>5000</span></td>
-      </template>
-      
+      <div class="container">
+        <h4 class="text-center">Catálogo de camisetas en stock</h4>
+        <div class="row" id="cards"></div>
+        <h4 class="text-center">CARRITO</h4>
+        <table class="table table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Item</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Acción</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody id="items"></tbody>
+          <tfoot>
+            <tr id="footer">
+              <th scope="row" colspan="5">Carrito vacío</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+  
+      <!--Template Carrito-->
       <template id="template-carrito">
         <tr>
           <th scope="row">id</th>
-          <td>Camiseta</td>
-          <td>1</td>
+          <td></td>
+          <td></td>
           <td>
-              <button class="btn btn-info btn-sm">
-                  +
-              </button>
-              <button class="btn btn-danger btn-sm">
-                  -
-              </button>
+            <button class="btn btn-info btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
           </td>
-          <td>$ <span>500</span></td>
+          <td>$ <span></span></td>
         </tr>
       </template>
-    
-        <template id="template-card">
-            <div class="col-12 mb-2 col-md-4 row-cols-1">
-              <div class="card text-white bg-secondary">
-                <img src="" alt="" class="card-img-top">
-                <div class="card-body">
-                  <h5>Titulo</h5>
-                  <p>precio</p>
-                  <button class="btn btn-dark">Comprar</button>
-                </div>
-              </div>
+      <!--Template Footer Carrito-->
+      <template id="template-footer">
+        <th scope="row" colspan="2">Total productos</th>
+        <td>10</td>
+        <td>
+          <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+            vaciar todo
+          </button>
+        </td>
+        <td class="font-weight-bold">$ <span>5000</span></td>
+      </template>
+  
+      <!--Template Cards-->
+      <template id="template-card">
+        <div class="col-12 mb-2 col-md-4">
+          <div class="card text-white bg-secondary">
+            <img src="" alt="" class="card-img-top" />
+            <div class="card-body">
+              <h5>Titulo</h5>
+              <p>precio</p>
+              <button class="btn btn-dark">Comprar</button>
             </div>
-        </template>
-
+          </div>
+        </div>
+      </template>
     </div>
-
-    <footer class="footer footerContent">
-      <div class="textoFooter">
-          <p>Sitio creado por: Taibo Agustin, curso de JavaScript en  <a href="https://www.coderhouse.com" target="_blank">Coderhouse</a> (camada 1850) </p>
-      </div>     
-      <div><!--iconos de redes sociales que redireccionan a sus respectivos sitios-->
-        <a href="https://twitter.com/agus_taibo" target="_blank" class="socialMediaIcon"><i class='bx bxl-twitter'></i></a>
-        <a href="https://www.linkedin.com/in/agustin-taibo-cruz-7b85541ab/" target="_blank" class="socialMediaIcon"><i class='bx bxl-linkedin-square' ></i></a>
-        <a href="https://github.com/TaiboAgustin" target="_blank" class="socialMediaIcon"><i class='bx bxl-github' ></i></a>
-        <a href="https://www.facebook.com/agustin.taibo/" class="socialMediaIcon"><i class='bx bxl-facebook-square' ></i></a>
-      </div>
-    </footer><!--cierra el footer-->
+       
     
-
-
+    
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

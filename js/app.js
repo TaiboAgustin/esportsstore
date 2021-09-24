@@ -8,6 +8,8 @@ const templateCarrito = document.getElementById('template-carrito').content
 const fragment = document.createDocumentFragment()
 let carrito = {}
 
+
+// El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
 document.addEventListener('DOMContentLoaded', () => {
     fetchData()
 
@@ -97,6 +99,7 @@ const dibujarCarrito = () =>{ //funcion flecha encargada de generar el carrito d
         templateCarrito.querySelector('.btn-danger').dataset.id = jersey.id
         templateCarrito.querySelector('span').textContent = jersey.cantidad * jersey.precio
 
+
         const clonar = templateCarrito.cloneNode(true)
         fragment.appendChild(clonar)
     })
@@ -160,3 +163,37 @@ const agregarOEliminarProductos = e =>{//funcion encargada de darle funcionalida
     e.stopPropagation()
 }
 
+
+/* ---------------- Agrego boton  finalizar compra con jQuery --------------- */
+$("body").append(
+    '<button id="btn1" class="btn btn-success w-100 ">Finalizar compra</button>'
+  );
+  /* ------------------------ Asociamos el evento click ----------------------- */
+  $("#btn1").click(function () {
+    if (jQuery.isEmptyObject(carrito)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Debe seleccionar algun producto primero!",
+      });
+    } else Swal.fire("Gracias por confiar en nosotros", "Su pedido se realizo correctamente!", "success");
+  
+    carrito = {};
+    pintarCarrito();
+  });
+  
+  /* --------------------------- Animaciones Jquery --------------------------- */
+  /* ------------ Agrego botón y un div con jQuery y oculto el div ------------ */
+  $("body").prepend(
+    '<button id="btn1" class="btn btn-warning w-100">Descuento Hot Sale 50% OFF</button>'
+  );
+  $("body").prepend(`<div id="div1" class="text-center" style="height: auto">
+                          <h3 class="text-center">¡CODIGO DE DESCUENTO! 50% OFF</h3>
+                          <h4>CODIGO: CAMADA18580</h4>
+                      </div>`);
+  $("#div1").hide();
+  //Muestro el div usando toggle
+  
+  $("#btn1").click(() => {
+    $("#div1").toggle("slow");
+  });
