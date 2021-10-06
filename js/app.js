@@ -181,25 +181,7 @@ $("body").append(
     carrito = {};
     pintarCarrito();
   });
-  
-  /* --------------------------- Animaciones Jquery --------------------------- */
-  /* ------------ Agrego botón y un div con jQuery y oculto el div ------------ */
-  $("body").prepend(
-    '<button id="btn1" class="btn btn-warning w-100">Descuento Hot Sale 50% OFF</button>'
-  );
-  $("body").prepend(`<div id="div1" class="text-center" style="height: auto">
-                          <h3 class="text-center">¡CODIGO DE DESCUENTO! 50% OFF</h3>
-                          <h4>CODIGO: CAMADA18580</h4>
-                      </div>`);
-  $("#div1").hide();
-  //Muestro el div usando toggle
-  
-  $("#btn1").click(() => {
-    $("#div1").toggle("slow");
-  });
 
-
-/*scroll reveal*/
 
 const sr = ScrollReveal({
     distance: '60px',
@@ -209,3 +191,16 @@ const sr = ScrollReveal({
 })
 
 sr.reveal(`.img-fluid, .text-center, .word`,{origin: 'top', interval: 100})
+
+/*=============== SHOW CARRITO ===============*/
+function scrollUp(){
+    const scrollUp = document.getElementById('scroll-up');
+    // cuando el scroll verticar es mayor que 560 pixeles, se agrega la clase show scroll al elemento con el id scroll up
+    if(this.scrollY >= 560) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
+    // cuando el scroll verticar es mayor que 3000 pixeles, se elimina la clase show scroll al elemento con el id scroll up
+    if (this.scrollY >= 3500) scrollUp.classList.remove('show-scroll')
+}
+window.addEventListener('scroll', scrollUp)
+
+
+

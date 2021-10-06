@@ -1,3 +1,9 @@
+/**google fonts**/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+a{
+    text-decoration: none !important;
+}
 .card-img-top{
     height: 450px;
 }
@@ -22,68 +28,33 @@
     padding: 10px;
 }
 
+/**scroll**/
 
-/**footer**/
-.footer{
-    width: 100%;
+.scrollup{
+    position: fixed;
     background-color: #161616;
-    padding: 20px; 
+    right: 1rem;
+    bottom: -20%;
+    display: inline-flex;
+    padding: .3rem;
+    border-radius: .25rem;
+    z-index: 10;
+    opacity: .8;
+    transition: .4s;
 }
 
-@media only screen and (max-width: 768px){
-    .footer{
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-    }
-}
-.footer .textoFooter p{
-    color: #fff;
-    font-size: 17px
+.scrollup:hover{
+    background-color: #555555;
 }
 
-@media only screen and (max-width: 768px){
-    .footer .textoFooter p{
-        text-align: center;
-    }
-}
-
-.footer .textoFooter a{
-    color: yellow;
-    font-style: italic;
-    transition: .3s ease-in-out;
-}
-
-.footer .textoFooter a:hover{
-    color: #aaaa10;
-    text-decoration: none;
-}
-
-.footerContent{
-    padding-top: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.socialMediaIcon {
-    display: inline-block;
-    margin-left: 20px;
-    width: 60px;
-    height: 60px;
-    border: 1px solid #ffffff;
-    border-radius: 50%;
-    text-align: center;
+.scrollup__icon{
+    font-size: 2rem;
     color: #ffffff;
-    transition: .3s ease-in-out;
+    opacity: 1;
 }
 
-.socialMediaIcon i {
-    font-size: 30px;
-    line-height: 60px;
-}
 
-.socialMediaIcon:hover{
-    background: #777272ff;
-    color: yellow;
+/*show scroll up*/
+.show-scroll{
+    bottom: 3rem;
 }
